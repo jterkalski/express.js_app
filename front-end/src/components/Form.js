@@ -20,10 +20,10 @@ const Form = ({ onSubmit }) => {
     padding: '7px 10px',
     border: '1px solid #efffff',
     borderRadius: '3px',
-    background: '#3085d6',
+    background: '#f5c61e',
     width: '100%',
     fontSize: '15px',
-    color: 'white',
+    color: 'black',
     display: 'block',
   };
 
