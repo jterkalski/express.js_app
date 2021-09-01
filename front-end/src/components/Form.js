@@ -1,7 +1,10 @@
 import React from 'react';
 import Field from './Field';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const Form = ({ onSubmit }) => {
+  const history = useHistory();
   const usernameRef = React.useRef();
   const passwordRef = React.useRef();
 
@@ -27,13 +30,19 @@ const Form = ({ onSubmit }) => {
     display: 'block',
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
+    const userToPost = {
       username: usernameRef.current.value,
       password: passwordRef.current.value,
     };
-    onSubmit(data);
+    const response = await axios
+      .post('http://localhost:5000/login', userToPost)
+      .catch((error) => console.log('Error: ', error));
+    if (response && response.data) {
+      console.log(response);
+      console.log(response.data);
+    }
   };
   return (
     <form style={formStyle} onSubmit={handleSubmit}>
