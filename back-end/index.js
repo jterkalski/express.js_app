@@ -61,6 +61,7 @@ app.post('/register', (req, res) => {
         console.log(err);
       }
     );
+    res.sendStatus(200);
   });
 });
 
@@ -157,6 +158,7 @@ app.get('/logout', (req, res) => {
   console.log('User logged out.');
 });
 
-app.listen(3001, () => {
-  console.log('running server');
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
+  console.log(`Server running on port: ${PORT}`);
 });
